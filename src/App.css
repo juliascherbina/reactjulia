@@ -9,20 +9,6 @@
     /* grid-gap: 10px; */
 }
 
-.header {
-    grid-area: h;
-    background-color: rgb(90, 97, 156);
-}
-.header img {
-    width: 20px;
-}
 
-.nav {
-    grid-area: n;
-    background-color: rgb(147, 123, 179)
-}
 
-.content {
-    grid-area: c;
-    background-color: aqua;
-}
+

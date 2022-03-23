@@ -1,0 +1,9 @@
+.item {
+    grid-area: c;
+    background-color: aqua;
+}
+.item img {
+    width: 40px;
+    border-radius: 30px;
+    height: 80px;
+}
