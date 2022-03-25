@@ -1,6 +1,6 @@
 .item {
     grid-area: c;
-    background-color: aqua;
+    background-color: rgb(51, 122, 180);
 }
 .item img {
     width: 40px;
