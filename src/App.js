@@ -5,8 +5,8 @@ import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { addPost } from './redux/state';
-import { updateNewPostText2 } from './redux/state';
+import DialogContainer from './components/Dialogs/DialogContainer';
+
 
 
 
@@ -17,16 +17,14 @@ const App = (props) => {
         <div className='app-wrapper'>
 
             <Header />
-            <Navbar state={props.state.sidebar} />
+            <Navbar  />
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route path='/dialogs/*' element={<Dialogs store={props.store}  dispatch={props.dispatch} />} />
-                    <Route path='/profile' element={<Profile profilePage={props.state.profilePage}
-                        dispatch={props.dispatch} />} />
-                    <Route path='/news' element={<Dialogs state={props.state.dialogsPage}
-                        dispatch={props.dispatch} />} />
-                    <Route path='/music' element={<Profile state={props.state.profilePage} profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-                    <Route path='/settings' element={<Dialogs state={props.state.dialogsPage} dispatch={props.dispatch} />} />
+                    <Route path='/dialogs/*' element={<DialogContainer store={props.store}  />} />
+                    <Route path='/profile' element={<Profile store={props.store}/>} />
+                    <Route path='/news' />
+                    <Route path='/music' element={<Profile  store={props.store}/>} />
+                    <Route path='/settings' />
 
                 </Routes>
             </div>

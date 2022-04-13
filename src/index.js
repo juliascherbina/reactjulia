@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './redux/state';
+import store from './redux/redux-store';
 
 import { BrowserRouter } from 'react-router-dom';
 
@@ -22,7 +22,10 @@ let RenderEntireTree = (state) => {
 }
 
 RenderEntireTree(store.getState())
-store.subscribe(RenderEntireTree)
+store.subscribe(()=>{
+  let state=(store.getState())
+  RenderEntireTree(state)
+})
 reportWebVitals();
 
 

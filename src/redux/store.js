@@ -1,3 +1,6 @@
+import dialogReducer from "./dialog-reducer"
+import profileReducer from "./profile-reducer"
+import sidebarReducer from "./sidebar-reducer"
 
 let store = {
     _state: {
@@ -45,42 +48,10 @@ let store = {
         this._RenderEntireTree = observer
     },
     dispatch(action) {
-        if (action.type === AddPost) {
-
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.textPost,
-                likes: 0
-            };
-
-            this._state.profilePage.Posts.push(newPost)
-            this._state.profilePage.textPost = ''
-            this._RenderEntireTree(this._state);
-
-        }
-        else if (action.type === NewText) {
-            this._state.profilePage.textPost = action.newText
-            this._RenderEntireTree(this._state);
-
-        }
-        else if (action.type === new_MesageText) {
-            this._state.dialogsPage.newMesageText=action.body
-            this._RenderEntireTree(this._state);
-        }
-        else if (action.type === sendMessage) {
-            let body=this._state.dialogsPage.newMesageText;
-            this._state.dialogsPage.newMesageText=''
-            this._state.dialogsPage.Message.push( { id: 6, message:body })
-            this._RenderEntireTree(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+        this._RenderEntireTree(this._state);
     }
 }
-const AddPost = 'AddPost';
-const NewText = 'NewPostText';
-const sendMessage = 'addMessage';
-const new_MesageText = 'NewPostBody'
-export const addPostActionCreator = () => ({ type: AddPost })
-export const NewPostText = (text) => ({ type: NewText, newText: text })
-export const sendMessageCreator = () => ({ type: sendMessage })
-export const updateMessageCreator = (body) => ({ type: new_MesageText, body: body })
 export default store;
