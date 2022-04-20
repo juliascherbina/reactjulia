@@ -1,6 +1,6 @@
 
 
-let InitialState={
+let InitialState = {
     Message: [
         { id: 1, message: 'Hi' },
         { id: 2, message: 'How are you?' },
@@ -17,19 +17,28 @@ let InitialState={
         { id: 5, name: 'Svetlana' }],
 
 }
-const dialogReducer = (state=InitialState, action) => {
+const dialogReducer = (state = InitialState, action) => {
+
     switch (action.type) {
         case new_MesageText:
-            state.newMesageText = action.body
-            return state
+            return {
+                ...state,
+                Message: [...state.Message],
+                newMesageText: action.body
+            }
+
+
         case sendMessage:
             let body = state.newMesageText;
-            state.Message.push({ id: 6, message: body })
-            
-            state.newMesageText = ''
+            return {
+                ...state,
+                Message: [...state.Message, { id: 6, message: body }],
+                newMesageText: ''
+            }
+
+
+        default:
             return state
-            default:
-                return state
     }
 }
 

@@ -14,10 +14,10 @@ const Dialogs = (props) => {
         props.updateMessageCreator(body)
     }
     let Dialogelements = state.dialogs.map(d =>
-        <DialogItems name={d.name} id={d.id} />
+        <DialogItems name={d.name} key={d.id} id={d.id} />
     );
     let Messageselement = state.Message.map(m =>
-        <Messages message={m.message} />
+        <Messages message={m.message} key={m.id} />
     )
     let newMessageText = state.newMesageText;
 
