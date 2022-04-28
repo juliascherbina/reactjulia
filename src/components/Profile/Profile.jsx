@@ -7,7 +7,8 @@ import s from './Profile.module.css';
 const Profile = (props) => {
     
     return <div >
-        <ProfileInfo  profile={props.profile}/>
+        <ProfileInfo  profile={props.profile}  status={props.status} 
+        UpdateStatus={props.UpdateStatus}/>
         <MyPostsContainer store={props.store} />
     </div>
 }

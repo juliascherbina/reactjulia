@@ -6,3 +6,18 @@
 .header img {
     width: 20px;
 }
+.loginBlock {
+    float:right;
+    
+}
+
+.item  {
+    color: white;
+    text-decoration: none;
+}
+
+
+.active {
+    color: blue;
+    text-decoration: none;
+}
