@@ -35,7 +35,7 @@ class ProfileContainer extends React.Component {
         UpdateStatus={this.props.UpdateStatus}/>
 
     }
-
+   
 }
 //let AuthRedirectComponent = WithAuthRedirect(ProfileContainer)
 
