@@ -8,7 +8,7 @@ let InitialState = {
         { id: 4, message: 'How is your sister?' },
         { id: 5, message: 'How is your sister?' }
     ],
-    newMesageText: '',
+  
     dialogs: [
         { id: 1, name: 'Julia' },
         { id: 2, name: 'Toxa' },
@@ -20,20 +20,15 @@ let InitialState = {
 const dialogReducer = (state = InitialState, action) => {
 
     switch (action.type) {
-        case new_MesageText:
-            return {
-                ...state,
-                Message: [...state.Message],
-                newMesageText: action.body
-            }
+      
 
 
         case sendMessage:
-            let body = state.newMesageText;
+            let body = action.newMessageText;
             return {
                 ...state,
                 Message: [...state.Message, { id: 6, message: body }],
-                newMesageText: ''
+                
             }
 
 
@@ -43,7 +38,7 @@ const dialogReducer = (state = InitialState, action) => {
 }
 
 const sendMessage = 'addMessage';
-const new_MesageText = 'NewPostBody';
-export const sendMessageCreator = () => ({ type: sendMessage })
-export const updateMessageCreator = (body) => ({ type: new_MesageText, body: body })
+
+export const sendMessageCreator = (newMessageText) => ({ type: sendMessage,newMessageText})
+
 export default dialogReducer

@@ -6,7 +6,7 @@ let InitialState = {
         { id: 2, message: 'It\'s  my first post', likes: 20 },
         { id: 2, message: 'It\'s  my 6y8t68568 post', likes: 20 },
         { id: 2, message: 'It\'s  t8t895678 first post', likes: 20 }],
-    textPost: 'it-kamasutra',
+   // textPost: 'it-kamasutra',
     profile: null,
     status: ''
 }
@@ -16,19 +16,19 @@ const profileReducer = (state = InitialState, action) => {
         case AddPost:
             let newPost = {
                 id: 5,
-                message: state.textPost,
+                message: action.NewPost,
                 likes: 0
             };
             return {
                 ...state,
                 Posts: [...state.Posts, newPost],
-                textPost: ''
+                //textPost: ''
             }
-        case NewText:
-            return {
-                ...state,
-                textPost: action.NewText
-            }
+        // case NewText:
+        //     return {
+        //         ...state,
+        //         textPost: action.NewText
+        //     }
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile }
             
@@ -39,11 +39,11 @@ const profileReducer = (state = InitialState, action) => {
     }
 }
 const AddPost = 'AddPost';
-const NewText = 'NewPostText';
+//const NewText = 'NewPostText';
 const SET_STATUS = 'SET_STATUS';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export const addPostActionCreator = () => ({ type: AddPost })
-export const NewPostText = (text) => ({ type: NewText, newText: text })
+export const addPostActionCreator = (NewPost) => ({ type: AddPost, NewPost })
+//export const NewPostText = (text) => ({ type: NewText, newText: text })
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const SetStatus = (status) => ({ type:SET_STATUS, status })
 export const getUserProfile = (userId) => {
