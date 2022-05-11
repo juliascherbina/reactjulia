@@ -5,10 +5,10 @@ const Header = (props) => {
     return <header className={s.header}>
         <img src='https://www.logodesign.net/images/nature-logo.png' />
         <div className={s.loginBlock}>
-            {props.isAuth ? props.login :
+            {props.isAuth ? <div> {props.login}- <button onClick={props.loginOut}>Log out</button>  </div> :
                 <NavLink to={'/login/'} className={navData => navData.isActive ? s.active : s.item} >
                     Login
-                    
+
                 </NavLink>}
         </div>
     </header>

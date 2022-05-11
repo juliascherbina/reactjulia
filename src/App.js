@@ -26,6 +26,7 @@ const App = (props) => {
                 <Routes>
                     <Route path='/dialogs/*' element={<DialogContainer store={props.store}  />} />
                     <Route path='/profile/:userId' element={<ProfileContainer store={props.store}/>} />
+                    <Route path='/profile' element={<ProfileContainer store={props.store}/>} />
                     <Route path='/users' element={<UsersContainer/>}/>
                     <Route path='/login' element={<Login/>}/>
 
