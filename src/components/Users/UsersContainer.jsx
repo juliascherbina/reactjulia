@@ -8,7 +8,7 @@ import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
 import { WithAuthRedirect } from "../../Hoc/WithAuthRedirect";
-import { GetCurrentPage, GetIsFetching, GetUsersfor, GetIsFollowing, GetPageSize, GetTotalCount } from "../../redux/users-Selectors";
+import { GetCurrentPage, GetIsFetching, GetUsersfor, GetIsFollowing, GetPageSize, GetTotalCount, GetUserSuper, GetUserSuperSelector } from "../../redux/users-Selectors";
 
 
 class UsersContainer extends React.Component {
