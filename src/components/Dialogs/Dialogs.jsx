@@ -23,9 +23,9 @@ const Dialogs = (props) => {
         <Messages message={m.message} key={m.id} />
     )
    // let newMessageText = state.newMesageText;
-      if(!props.isAuth) {
-          return <Navigate to='/Login'/>
-      } 
+    //   if(!props.isAuth) {
+    //       return <Navigate to='/Login'/>
+    //   } 
      let addNewMessage=(values)=>{
         props.sendMessageCreator(values.newMessageText)
         values.newMessageText = "";

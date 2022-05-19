@@ -78,6 +78,7 @@ export const changePage = (pageNumber) =>{
 export const GetUsers=(currentPage, pageSize) =>{ 
     return (dispatch) => {
     dispatch(toggleIsFetching(true))
+    dispatch(setCurrentPage(currentPage))
     userAPI.GetUsers(currentPage, pageSize).then(data => {
         dispatch(toggleIsFetching(false))
         dispatch(setUsers(data.items));

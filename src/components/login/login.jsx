@@ -8,7 +8,7 @@ import { loginApi } from '../../redux/auth-reducer'
 import { Navigate } from 'react-router-dom'
 import { WithAuthRedirect } from '../../Hoc/WithAuthRedirect'
 import ProfileContainer from '../Profile/ProfileContainer'
-
+import styles from '../common/Preloader/FormsControle.module.css'
 
 
 const Login = (props) => {
@@ -30,6 +30,9 @@ export const LoginForm = (props) => {
         <div> <Field placeholder={'Login'} name={'email'} component={Input} validate={[required]} /></div>
         <div><Field placeholder={'Password'} name={'password'} type={'password'} component={Input} validate={[required]} /></div>
         <div><Field component={Input} name={'rememberMe'} type={'checkbox'} validate={[required]} />remember me</div>
+        {   props.error && <div className={styles.formSummeryError}>
+         {props.error}
+        </div>}
         <div> <button>Login</button></div>
     </form>
     )

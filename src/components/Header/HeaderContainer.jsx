@@ -5,8 +5,8 @@ import { SetAuthUserData, GetAuthUserData, loginOut } from '../../redux/auth-red
 
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        this.props.GetAuthUserData()
+    // componentDidMount() {
+    //     this.props.GetAuthUserData()
         // userAPI.HeaderGet().
         // then(data => {
         //     if (data.resultCode === 0) {
@@ -21,7 +21,7 @@ class HeaderContainer extends React.Component {
         //             this.props.SetAuthUserData(id,email,login)
         //         }
         //     })
-    }
+   // }
     render() {
         return <Header {...this.props} />
     }
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, { SetAuthUserData, GetAuthUserData, loginOut })(HeaderContainer);
+export default connect(mapStateToProps, { SetAuthUserData, loginOut })(HeaderContainer);
