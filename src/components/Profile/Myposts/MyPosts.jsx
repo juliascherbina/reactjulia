@@ -10,6 +10,8 @@ import Post from './Post/Post';
 
 
 const MyPosts = (props) => {
+  console.log('RENDER')
+  console.log(props)
   let Postelements = props.Posts.map(p => <Post message={p.message} likes={p.likes} />)
   //let Element = React.createRef();
   // let Addpost = () => {

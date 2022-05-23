@@ -2,6 +2,7 @@ import React from 'react';
 import Preloader from '../../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import ProfileStatus from './ProfileStatus'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 const ProfileInfo = (props) => {
     
     if(!props.profile) {
@@ -17,7 +18,7 @@ const ProfileInfo = (props) => {
             <div> {props.profile.aboutMe}</div>
             <div> {props.profile.contacts.facebook}</div>
             <div> {props.profile.fullName}</div>
-            <ProfileStatus status={props.status}   UpdateStatus={props.UpdateStatus} />
+            <ProfileStatusWithHooks status={props.status}   UpdateStatus={props.UpdateStatus} />
             ava + description
        </div>
     </div>
