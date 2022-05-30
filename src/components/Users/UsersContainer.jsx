@@ -4,21 +4,21 @@ import {
     follow, changePage, unfollow, toggleFollowingProgres, GetUsers, Follow, Unfollow
 } from "../../redux/users-reducer ";
 import Users from "./Users";
-
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
-import { WithAuthRedirect } from "../../Hoc/WithAuthRedirect";
 import { GetCurrentPage, GetIsFetching, GetUsersfor, GetIsFollowing, GetPageSize, GetTotalCount, GetUserSuper, GetUserSuperSelector } from "../../redux/users-Selectors";
 
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.GetUsers(this.props.currentPage, this.props.pageSize);
+        const { currentPage, pageSize } = this.props
+        this.props.GetUsers(currentPage, pageSize);
     }
 
     onPageChanged = (pageNumber) => {
+        const {pageSize}= this.props
         this.props.changePage(pageNumber);
-        this.props.GetUsers(pageNumber, this.props.pageSize);
+        this.props.GetUsers(pageNumber,pageSize);
     }
     render() {
 
@@ -60,7 +60,7 @@ let mapStateToProps = (state) => {
         isFollowing: GetIsFollowing(state)
     }
 }
- export default compose(//WithAuthRedirect,
+export default compose(//WithAuthRedirect,
     connect(mapStateToProps, {
         follow, unfollow, changePage,
         toggleFollowingProgres, GetUsers
