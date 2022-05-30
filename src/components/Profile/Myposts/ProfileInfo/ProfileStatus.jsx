@@ -20,7 +20,7 @@ class ProfileStatus extends React.Component {
     }
     OnStatusChange=(e)=>{
           this.setState({
-              status:e.currentTarget.value 
+              status:e.currentTarget.value  
           });
     }
     componentDidUpdate(prevProps, prevState) {
