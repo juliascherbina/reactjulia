@@ -2,13 +2,14 @@ import React from 'react';
 import Paginator from '../common/Paginator/Paginator';
 import User from './User';
 
-let Users = ({ currentPage, pagesCount, totalCount, pageSize, onPageChanged, ...props }) => {
+let Users = ({ currentPage, pagesCount, totalItemsCount, pageSize,portionSize, onPageChanged, ...props }) => {
     return <div>
         <Paginator currentPage={currentPage}
             pagesCount={pagesCount}
             onPageChanged={onPageChanged}
-            totalCount={totalCount}
-            pageSize={pageSize} />
+            totalItemsCount={totalItemsCount}
+            pageSize={pageSize}
+            portionSize={portionSize} />
         <div>
             {
                 props.users.map(u =>

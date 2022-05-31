@@ -14,7 +14,7 @@ export const GetPageSize = (state) => {
     return state.usersPage.pageSize
 }
 export const GetTotalCount = (state) => {
-    return state.usersPage.totalCount
+    return state.usersPage.totalItemsCount
 }
 export const GetCurrentPage = (state) => {
     return state.usersPage.currentPage
@@ -24,4 +24,7 @@ export const GetIsFetching = (state) => {
 }
 export const GetIsFollowing = (state) => {
     return state.usersPage.isFollowing
+}
+export const GetPortionSize = (state) => {
+    return state.usersPage.portionSize
 }

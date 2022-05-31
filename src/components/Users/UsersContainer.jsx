@@ -6,7 +6,7 @@ import {
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
-import { GetCurrentPage, GetIsFetching, GetUsersfor, GetIsFollowing, GetPageSize, GetTotalCount, GetUserSuper, GetUserSuperSelector } from "../../redux/users-Selectors";
+import { GetCurrentPage, GetIsFetching, GetUsersfor, GetIsFollowing, GetPageSize, GetTotalCount, GetUserSuper, GetUserSuperSelector, GetPortionSize } from "../../redux/users-Selectors";
 
 
 class UsersContainer extends React.Component {
@@ -25,7 +25,7 @@ class UsersContainer extends React.Component {
 
         return <>
             {this.props.isFetching ? <Preloader /> : null}
-            <Users totalCount={this.props.totalCount}
+            <Users totalItemsCount={this.props.totalItemsCount}
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
@@ -33,6 +33,7 @@ class UsersContainer extends React.Component {
                 follow={this.props.follow}
                 unfollow={this.props.unfollow}
                 isFollowing={this.props.isFollowing}
+                portionSize={this.props.portionSize}
 
 
 
@@ -54,10 +55,11 @@ let mapStateToProps = (state) => {
     return {
         users: GetUsersfor(state),
         pageSize: GetPageSize(state),
-        totalCount: GetTotalCount(state),
+        totalItemsCount: GetTotalCount(state),
         currentPage: GetCurrentPage(state),
         isFetching: GetIsFetching(state),
-        isFollowing: GetIsFollowing(state)
+        isFollowing: GetIsFollowing(state),
+        portionSize: GetPortionSize(state)
     }
 }
 export default compose(//WithAuthRedirect,

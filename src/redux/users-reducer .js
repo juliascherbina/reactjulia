@@ -3,8 +3,9 @@ import { updateObjectInArray } from '../utils/objectsHelpers'
 let InitialState = {
     users: [],
     pageSize: 5,
-    totalCount: 0,
+    totalItemsCount: 0,
     currentPage: 5,
+    portionSize:10,
     isFetching: false,
     isFollowing: []
 }
@@ -40,7 +41,7 @@ const usersReducer = (state = InitialState, action) => {
             return { ...state, currentPage: action.currentPage }
         }
         case SET_USER_TOTAL_COUNT: {
-            return { ...state, totalCount: action.count }
+            return { ...state, totalItemsCount: action.count }
         }
         case TOGGLE_IS_FETCHING: {
             return { ...state, isFetching: action.isFetching }
