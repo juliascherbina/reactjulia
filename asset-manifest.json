@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/reactjulia/static/css/main.c5792def.css",
+    "main.js": "/reactjulia/static/js/main.0b913063.js",
+    "static/css/521.d864925e.chunk.css": "/reactjulia/static/css/521.d864925e.chunk.css",
+    "static/js/521.8119645c.chunk.js": "/reactjulia/static/js/521.8119645c.chunk.js",
+    "static/js/787.ef145c25.chunk.js": "/reactjulia/static/js/787.ef145c25.chunk.js",
+    "static/media/spinner.svg": "/reactjulia/static/media/spinner.b08350ce414421ba6a6db17613c39310.svg",
+    "index.html": "/reactjulia/index.html",
+    "main.c5792def.css.map": "/reactjulia/static/css/main.c5792def.css.map",
+    "main.0b913063.js.map": "/reactjulia/static/js/main.0b913063.js.map",
+    "521.d864925e.chunk.css.map": "/reactjulia/static/css/521.d864925e.chunk.css.map",
+    "521.8119645c.chunk.js.map": "/reactjulia/static/js/521.8119645c.chunk.js.map",
+    "787.ef145c25.chunk.js.map": "/reactjulia/static/js/787.ef145c25.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5792def.css",
+    "static/js/main.0b913063.js"
+  ]
+}
