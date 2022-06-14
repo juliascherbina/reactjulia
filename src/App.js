@@ -46,7 +46,10 @@ class App extends React.Component {
                             <React.Suspense fallback={<div>Завантаження...</div>}>
                                 <ProfileContainer store={this.props.store} />
                             </React.Suspense>}></Route>
-                        <Route path='/profile' element={<ProfileContainer store={this.props.store} />} />
+                        <Route path='/profile' element={
+                            <React.Suspense fallback={<div>Завантаження...</div>}>
+                                <ProfileContainer store={this.props.store} />
+                            </React.Suspense>}> </Route>
                         <Route path='/users' element={<UsersContainer />} />
                         <Route path='/login' element={<Login />} />
 
