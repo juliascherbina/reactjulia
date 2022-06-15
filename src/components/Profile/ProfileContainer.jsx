@@ -48,7 +48,8 @@ class ProfileContainer extends React.Component {
             isOwner={this.getIsMyProfile()}
             savePhoto={this.props.savePhoto}
             profile={this.props.profile} status={this.props.status}
-            UpdateStatus={this.props.UpdateStatus} />
+            UpdateStatus={this.props.UpdateStatus}
+            saveProfile={props.saveProfile} />
 
     }
 
@@ -72,7 +73,7 @@ let mapStateToProps = (state) => ({
 
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile, GetStatus, UpdateStatus,savePhoto }),
+    connect(mapStateToProps, { getUserProfile, GetStatus, UpdateStatus,savePhoto, saveProfile }),
     withRouter
 )(ProfileContainer)
 

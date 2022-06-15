@@ -86,4 +86,12 @@ export const savePhoto = (file) => {
         }
     }
 }
+export const saveProfile = (file) => {
+    return async (dispatch) => {
+        let response = await ProfileAPI.saveProfile(file)
+        if (response.data.resultCode === 0) {
+            dispatch(SavePtotoSuccess(response.data.data.photos));
+        }
+    }
+}
 export default profileReducer;

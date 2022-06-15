@@ -34,7 +34,7 @@ export const Input = ({ input, meta, ...props }) => {
 
         </div>
     )
-
+        
 }
 
 export const CreateField = (placeholder, name, component, validate, props = {}, text = '') => {
