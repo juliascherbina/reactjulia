@@ -22,11 +22,11 @@ export const ProfileDataForm = ({ handleSubmit,profile }) => {
             {CreateField('About me', 'about me', TextArea, [],)}
 
         </div>
-        {/* <div>
+        <div>
         <b>Contacts</b>:  {Object.keys(profile.contacts).map(key => {
             return <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]} />
         })}
-    </div> */}
+    </div>
     </form>
 }
 const ProfileDataReduxForm = reduxForm({ form: 'ProfileInfo' })(ProfileDataForm)

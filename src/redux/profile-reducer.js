@@ -58,6 +58,7 @@ export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const deletePost = (postid) => ({ type: DELETE_POST, postid })
 export const SetStatus = (status) => ({ type: SET_STATUS, status })
 export const SavePtotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos })
+
 export const getUserProfile = (userId) => {
     return async (dispatch) => {
         let response = await ProfileAPI.getProfile(userId)
@@ -86,11 +87,12 @@ export const savePhoto = (file) => {
         }
     }
 }
-export const saveProfile = (file) => {
+export const saveProfile = (profile, getState) => {
+   const id= getState().auth.id
     return async (dispatch) => {
-        let response = await ProfileAPI.saveProfile(file)
+        const response = await ProfileAPI.saveProfile(profile)
         if (response.data.resultCode === 0) {
-            dispatch(SavePtotoSuccess(response.data.data.photos));
+            dispatch(getUserProfile(id));
         }
     }
 }
