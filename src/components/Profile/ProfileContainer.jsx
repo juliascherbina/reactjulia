@@ -4,7 +4,6 @@ import Profile from './Profile';
 import { connect } from 'react-redux';
 import { GetStatus, getUserProfile, UpdateStatus, savePhoto, saveProfile } from '../../redux/profile-reducer'
 import { withRouter } from '../../Hoc/withRouter';
-import { WithAuthRedirect } from '../../Hoc/WithAuthRedirect';
 import { compose } from 'redux';
 import { Navigate } from 'react-router-dom';
 

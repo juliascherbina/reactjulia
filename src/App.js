@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import './App.css'
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import UsersContainer from './components/Users/UsersContainer';
 //import ProfileContainer from './components/Profile/ProfileContainer';
@@ -21,44 +21,58 @@ const DialogContainer = React.lazy(() => import('./components/Dialogs/DialogCont
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component {
+    catchAllUnhanledErrors = (reason, promise) => {
+        alert('some error occured')
+    }
     componentDidMount() {
-        this.props.initializeApp()
+        this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllUnhanledErrors)
+       
     }
+        
+    
+// componentWillUnmount() {
+//     window.removeaddEventListener("unhandledrejection", this.catchAllUnhanledErrors)
+
+// }
 
 
-    render() {
-        if (!this.props.initialized) {
-            return <Preloader />
-        }
-        return (
+render() {
+    if (!this.props.initialized) {
+        return <Preloader />
+    }
+    return (
 
-            <div className='app-wrapper'>
+        <div className='app-wrapper'>
 
-                <HeaderContainer />
-                <Navbar />
-                <div className='app-wrapper-content'>
-                    <Routes>
-                        <Route path='/dialogs/*' element={
-                            <React.Suspense fallback={<div>Завантаження...</div>}>
-                                <DialogContainer store={this.props.store} />
-                            </React.Suspense>}></Route>
-                        <Route path='/profile/:userId' element={
-                            <React.Suspense fallback={<div>Завантаження...</div>}>
-                                <ProfileContainer store={this.props.store} />
-                            </React.Suspense>}></Route>
-                        <Route path='/profile' element={
-                            <React.Suspense fallback={<div>Завантаження...</div>}>
-                                <ProfileContainer store={this.props.store} />
-                            </React.Suspense>}> </Route>
-                        <Route path='/users' element={<UsersContainer />} />
-                        <Route path='/login' element={<Login />} />
+            <HeaderContainer />
+            <Navbar />
+            <div className='app-wrapper-content'>
+                <Routes>
+                    <Route exact path='/' element={
+                        <Navigate to={'/profile'} />}></Route>
+                    <Route path='/dialogs/*' element={
+                        <React.Suspense fallback={<div>Завантаження...</div>}>
+                            <DialogContainer store={this.props.store} />
+                        </React.Suspense>}></Route>
+                    <Route path='/profile/:userId' element={
+                        <React.Suspense fallback={<div>Завантаження...</div>}>
+                            <ProfileContainer store={this.props.store} />
+                        </React.Suspense>}></Route>
+                    <Route path='/profile' element={
+                        <React.Suspense fallback={<div>Завантаження...</div>}>
+                            <ProfileContainer store={this.props.store} />
+                        </React.Suspense>}> </Route>
+                    <Route path='/users' element={<UsersContainer />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='*' element={<div>404 not found</div>} />
 
-                    </Routes>
-                </div>
+                </Routes>
             </div>
+        </div>
 
-        );
-    }
+    );
+}
 }
 export const mapStateToProps = (state) => ({
     initialized: state.app.initialized

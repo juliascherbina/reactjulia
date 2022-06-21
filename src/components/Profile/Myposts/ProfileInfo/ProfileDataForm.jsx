@@ -1,6 +1,7 @@
 import React from "react"
 import { reduxForm } from "redux-form"
 import { CreateField, Input, TextArea } from "../../../common/Preloader/FormsControls"
+import { Contacts } from "./ProfileInfo"
 
 export const ProfileDataForm = ({ handleSubmit,profile }) => {
     return <form onSubmit={handleSubmit}>
