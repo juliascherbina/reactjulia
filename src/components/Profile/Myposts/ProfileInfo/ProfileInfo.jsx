@@ -4,6 +4,8 @@ import s from './ProfileInfo.module.css';
 import userPhoto from '../../../../assets/images/user.png'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import { useState } from 'react';
+import ProfileDataForm from './ProfileDataForm';
+import ProfileDataReduxForm from './ProfileDataForm';
 const ProfileInfo = (props) => {
     let [EditMode, SetEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
@@ -15,14 +17,19 @@ const ProfileInfo = (props) => {
             props.savePhoto(e.target.files[0])
         }
     }
+    const onSubmit = (formData) => {
+        props.saveProfile(formData);
+        SetEditMode(false)
+    }
+
     return <div>
         <div className={s.descriptionBlock}>
 
             <img src={props.profile.photos.large || userPhoto} className={s.avatar} />
             {!props.isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
             {EditMode
-                ? <ProfileDataForm profile={props.profile} />
-                : <ProfileData goToEditMode={()=>{SetEditMode(true)}} profile={props.profile} isOwner={props.isOwner} />}
+                ? <ProfileDataReduxForm  onSubmit={onSubmit} profile={props.profile} />
+                : <ProfileData goToEditMode={() => { SetEditMode(true) }} profile={props.profile} isOwner={props.isOwner} />}
             <ProfileStatusWithHooks status={props.status} UpdateStatus={props.UpdateStatus} />
             ava + description
         </div>
@@ -48,12 +55,8 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
         </div>
     </div>
 }
-const ProfileDataForm = ({ profile }) => {
-    return <div>
-        Form
-    </div>
-}
-const Contacts = ({ contactTitle, contactValue }) => {
+
+export const Contacts = ({ contactTitle, contactValue }) => {
     return <div className={s.contact}>
         <b>{contactTitle}</b>:{contactValue}
     </div>

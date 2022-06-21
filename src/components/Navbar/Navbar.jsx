@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import s from './Navbar.module.css';
-console.log(s)
 const Navbar = (props) => {
     return (<nav className={s.nav}>
         <div>
